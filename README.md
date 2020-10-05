@@ -1,7 +1,7 @@
 # Caesar_cipher
 
 > How to use
-- install dependensy
+- install dependency
 
 ```
 npm install
