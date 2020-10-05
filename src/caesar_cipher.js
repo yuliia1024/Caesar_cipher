@@ -1,10 +1,16 @@
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const ENCRYPTION = 'encode';
-
-const cryptoSystem = (text, shift, mode = ENCRYPTION) => {
-    if (mode !== ENCRYPTION) {
+const DECRYPTION = 'decode';
+const cryptoSystem = (text, shift, mode='') => {
+    if (mode === DECRYPTION) {
         shift *= -1;
+    } else if (mode === ENCRYPTION) {
+        shift *=1;
     }
+    else{
+        process.stderr.write('enter correct action\n');
+        process.exit(1)
+    };
     return text.split('').map(symbol => {
         const lowerCaseOfSymbol = symbol.toLowerCase();
 

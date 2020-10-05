@@ -1,9 +1,9 @@
-const ACTION = ['a', 'action']; // the required param
+const ACTION = ['a', 'action'];
 const INPUT_FILE = ['i', 'input'];
 const OUTPUT_FILE = ['o', 'output'];
-const SHIFT = ['s', 'shift']; // the required param
+const SHIFT = ['s', 'shift'];
 
-// Obtain the console arguments
+
 const args = require('minimist')(process.argv.slice(2));
 
 function errorHandler(err) {
@@ -12,7 +12,6 @@ function errorHandler(err) {
         process.exit(1);
     }
 }
-
 
 function getInputFile() {
     return args[INPUT_FILE[0]] || args[INPUT_FILE[1]];
