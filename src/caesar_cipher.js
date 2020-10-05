@@ -1,7 +1,7 @@
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const ENCRYPTION = 'encode';
 const DECRYPTION = 'decode';
-const cryptoSystem = (text, shift, mode='') => {
+const caesarCipher = (text, shift, mode='') => {
     if (mode === DECRYPTION) {
         shift *= -1;
     } else if (mode === ENCRYPTION) {
@@ -33,4 +33,4 @@ const cryptoSystem = (text, shift, mode='') => {
     }).join('');
 };
 
-module.exports = {cryptoSystem};
+module.exports = {caesarCipher};

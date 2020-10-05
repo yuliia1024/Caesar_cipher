@@ -3,7 +3,6 @@ const INPUT_FILE = ['i', 'input'];
 const OUTPUT_FILE = ['o', 'output'];
 const SHIFT = ['s', 'shift'];
 
-
 const args = require('minimist')(process.argv.slice(2));
 
 function errorHandler(err) {
@@ -17,7 +16,6 @@ function getInputFile() {
     return args[INPUT_FILE[0]] || args[INPUT_FILE[1]];
 }
 
-
 function getOutputFile() {
     return args[OUTPUT_FILE[0]] || args[OUTPUT_FILE[1]];
 }
@@ -30,28 +28,11 @@ function getShift() {
     return args[SHIFT[0]] || args[SHIFT[1]];
 }
 
-function validateArgs() {
-    if (!getAction(args)) {
-        errorHandler(new Error('argument --action is required'));
-    }
-    if (!getShift(args)) {
-        errorHandler(new Error('argument --shift is required'));
-    }
-    const fs = require('fs');
-    let file = getInputFile(args);
-    if (file) {
-        fs.access(file, fs.constants.R_OK, err => errorHandler(err));
-    }
-    file = getOutputFile(args);
-    if (file) {
-        fs.access(file, fs.constants.W_OK, err => errorHandler(err));
-    }
-}
-
 module.exports = {
-    validateArgs,
     getInputFile,
     getOutputFile,
     getAction,
-    getShift
+    getShift,
+    errorHandler,
+    args
 };

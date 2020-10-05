@@ -1,4 +1,5 @@
-const {dataTransformation} = require('./src/data.js');
-const {getOutputFile, getInputFile, validateArgs} = require('./src/arguments.js');
+const {dataTransform} = require('./src/data.js');
+const {getOutputFile, getInputFile} = require('./src/arguments.js');
+const { validateArgs} = require("./src/validator")
 validateArgs();
-dataTransformation(getInputFile(), getOutputFile());
+dataTransform(getInputFile(), getOutputFile());

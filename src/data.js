@@ -1,8 +1,8 @@
 const fs = require('fs');
 const {pipeline} = require('stream');
-const {code} = require('./stream.js');
+const {codeStream} = require('./stream.js');
 
-function dataTransformation(inputFile, outputFile) {
+function dataTransform(inputFile, outputFile) {
     let source;
     if(inputFile) {
         source = fs.createReadStream(inputFile);
@@ -15,7 +15,7 @@ function dataTransformation(inputFile, outputFile) {
     } else {
         target = process.stdout;
     }
-    pipeline(source, code, target, err => {
+    pipeline(source, codeStream, target, err => {
         if (err) {
             process.stderr.write(err.message + '\n');
             process.exit(1);
@@ -24,5 +24,5 @@ function dataTransformation(inputFile, outputFile) {
 }
 
 module.exports = {
-    dataTransformation
+    dataTransform
 };

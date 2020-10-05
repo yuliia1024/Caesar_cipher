@@ -1,16 +1,15 @@
 const {getAction, getShift} = require('./arguments.js');
-const {cryptoSystem} = require('./caesar_cipher.js');
+const {caesarCipher} = require('./caesar_cipher.js');
 
 const stream = require('stream');
-const code = new stream.Transform({objectMode: true});
+const codeStream = new stream.Transform({objectMode: true});
 
-
-code._transform = function (chunk, encoding, done) {
+codeStream._transform = function (chunk, encoding, done) {
     try {
-        done(null, cryptoSystem(chunk.toString(), getShift(), getAction()));
+        done(null, caesarCipher(chunk.toString(), getShift(), getAction()));
     } catch (e) {
         done(e);
     }
 };
 
-module.exports = {code};
+module.exports = {codeStream};
